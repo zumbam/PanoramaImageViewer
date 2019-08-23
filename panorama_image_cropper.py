@@ -73,8 +73,7 @@ def crop_panorama_image(img, theta=0.0, phi=0.0, res_x=512, res_y=512, fov=60.0,
     if debug:
         for x in range(res_x):
             for y in range(res_y):
-                print '(%.2f, %.2f)\t' % (map_x[x, y], map_y[x, y]),
-            print
+                print ('(%.2f, %.2f)\t' % (map_x[x, y], map_y[x, y]))
 
     return cv2.remap(img, map_y, map_x, cv2.INTER_LINEAR, borderMode=cv2.BORDER_WRAP)
 

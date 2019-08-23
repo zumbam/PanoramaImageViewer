@@ -38,22 +38,22 @@ def key_press(key, mod):
     if key == 0xFF52: # up
         if cur_phi > -80.0 / 180 * math.pi:
             cur_phi -= math.pi/12
-        print 'Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi)
+        print ('Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi))
         img_updated = True
     if key == 0xFF53: # right
         cur_theta += math.pi/12
         cur_theta = (cur_theta + math.pi) % (2 * math.pi) - math.pi
-        print 'Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi)
+        print ('Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi))
         img_updated = True
     if key == 0xFF51: # left
         cur_theta -= math.pi/12
         cur_theta = (cur_theta + math.pi ) % (2 * math.pi) - math.pi
-        print 'Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi)
+        print ('Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi))
         img_updated = True
     if key == 0xFF54: # down
         if cur_phi < 80.0 / 180 * math.pi:
             cur_phi += math.pi/12
-        print 'Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi)
+        print ('Theta: %.4f, Phi: %.4f' % (cur_theta, cur_phi))
         img_updated = True
 
 def loop():
@@ -63,10 +63,10 @@ def loop():
             break
         
         if img_updated:
-            print 'Updating...'
+            print ('Updating...')
             img_updated = False
             current_img = crop_panorama_image(img, cur_theta/math.pi*180, cur_phi/math.pi*180, fov=args.fov)
-            print 'Updated.'
+            print ('Updated.')
 
         viewer.imshow(imresize(current_img, [512, 512]))
 
